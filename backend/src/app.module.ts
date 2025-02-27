@@ -1,22 +1,33 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
-import { TestModule } from './test/test.module';
+import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './modules/auth/auth.module';
+import { GatewayModule } from './modules/gateway/gateway.module';
+import { BoardsModule } from './modules/boards/boards.module';
+import { TasksModule } from './modules/tasks/tasks.module';
+import { CommentsModule } from './modules/comments/comments.module';
+import { FilesModule } from './modules/files/files.module';
+import { IntegrationsModule } from './modules/integrations/integrations.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { SearchModule } from './modules/search/search.module';
+import { MongoModule } from './shared/mongo/mongo.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    TestModule,
-    MongooseModule.forRootAsync({
-      useFactory: (configService: ConfigService) => ({
-        uri: `mongodb://${configService.get('MONGODB_USER')}:${configService.get('MONGODB_PASS')}@${configService.get('MONGODB_HOST')}:${configService.get('MONGODB_PORT')}/${configService.get('MONGODB_DB_NAME')}?authSource=admin`,
-      }),
-      inject: [ConfigService],
-    }),
+    MongoModule,
+    AuthModule,
+    GatewayModule,
+    BoardsModule,
+    TasksModule,
+    CommentsModule,
+    FilesModule,
+    IntegrationsModule,
+    NotificationsModule,
+    AnalyticsModule,
+    SearchModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

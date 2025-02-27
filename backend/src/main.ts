@@ -6,6 +6,8 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api');
+
   const port = process.env.PORT || 3000; // Default port
   const logger = new Logger('Bootstrap');
   logger.log(`Application is running on: http://localhost:${port}`);

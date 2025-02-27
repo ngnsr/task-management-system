@@ -1,0 +1,51 @@
+task-management-system/
+├── docker-compose.yml                # Local development setup
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                    # CI pipeline
+│       └── cd.yml                    # CD pipeline
+├── infrastructure/
+│   ├── kubernetes/                   # K8s manifests
+│   ├── monitoring/                   # Prometheus, Grafana configs
+│   └── logging/                      # Logging configurations
+├── docs/
+│   ├── architecture/                
+│   ├── api/                         
+│   └── events/                      
+├── shared/
+│   ├── models/                       # Shared domain models
+│   ├── utils/                        # Common utilities
+│   ├── constants/                    # Shared constants
+│   ├── db/                           # Database connection modules
+│   │   ├── mongo/                    # MongoDB connection
+│   │   └── redis/                    # Redis connection
+│   └── events/                       # Shared event definitions
+├── backend/                          # Backend application (NestJS)
+│   ├── Dockerfile
+│   ├── src/
+│   │   ├── modules/
+│   │   │   ├── auth/                 # Authentication & user management  
+│   │   │   ├── gateway/              # API Gateway
+│   │   │   ├── boards/               # Board management  
+│   │   │   ├── tasks/                # Task management  
+│   │   │   ├── comments/             # Comments on tasks  
+│   │   │   ├── files/                # File uploads & storage  
+│   │   │   ├── integrations/         # 3rd-party integrations (GitHub, Jira, etc.)  
+│   │   │   ├── notifications/        # Email, Slack, Telegram, etc.  
+│   │   │   ├── analytics/            # Reporting & insights  
+│   │   │   └── search/               # Search functionality 
+│   │   ├── main.ts
+│   ├── package.json
+│   └── tsconfig.json
+├── frontend/                         # Frontend application (React)
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── api/
+│   │   ├── hooks/
+│   │   ├── store/
+│   │   └── App.tsx
+│   ├── package.json
+│   └── tsconfig.json
+└── README.md
+
