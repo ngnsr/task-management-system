@@ -1,0 +1,27 @@
+services:
+  backend:
+    image: ngnsr/task-management:latest
+    ports:
+      - '3003:3003'
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - mongodb
+      # - redis
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
+
+  # redis:
+  #   image: redis:latest
+  #   ports:
+  #     - '6379:6379'
+
+volumes:
+  mongodb-data:
+    driver: local
