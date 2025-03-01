@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class TasksController {
   @Get()
   test() {
-    return 'hello';
+    return 'test deploy';
   }
 }
