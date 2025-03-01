@@ -8,32 +8,33 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 
 # Install dependencies with ci for better reproducibility
-RUN npm ci --only=production && \
-    # Create a non-root user for security
+RUN npm install -g @nestjs/cli && npm ci --only=production && \
     npm cache clean --force && \
     adduser --disabled-password --gecos "" nodeuser
 
 # Copy only necessary files for the build
 COPY --chown=nodeuser:nodeuser tsconfig*.json ./
 COPY --chown=nodeuser:nodeuser src/ ./src/
+COPY --chown=nodeuser:nodeuser .env ./.env
 
 # Build the application
-RUN npm run build && \
+RUN npm run build
+# RUN npm run build && \
     # Clean up source files after build to reduce image size
-    rm -rf src/
+    # rm -rf src/
 
 # Set the user to non-root
 USER nodeuser
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 3003
 
 # Set production environment
 ENV NODE_ENV=production
 
 # Use a healthcheck to verify the app is running properly
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/health', (r) => r.statusCode === 200 ? process.exit(0) : process.exit(1))"
+# HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+#   CMD node -e "require('http').get('http://localhost:3000/health', (r) => r.statusCode === 200 ? process.exit(0) : process.exit(1))"
 
 # Run the app
 CMD ["npm", "run", "start:prod"]
