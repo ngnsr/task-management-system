@@ -1,7 +1,6 @@
 services:
   backend:
-    # entrypoint: ['sh', '-c', 'sleep infinity']
-    build: .
+    image: ngnsr/task-management:latest
     ports:
       - '3003:3003'
     environment:
