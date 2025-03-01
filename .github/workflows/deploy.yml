@@ -27,7 +27,7 @@ jobs:
 
       - name: Build and push backend Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/task-management:latest .
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/task-management:latest ./build/
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/task-management:latest
 
       # - name: Scan for vulnerabilities
