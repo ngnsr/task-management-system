@@ -1,51 +1,61 @@
-task-management-system/
-├── docker-compose.yml                # Local development setup
-├── .github/
-│   └── workflows/
-│       ├── ci.yml                    # CI pipeline
-│       └── cd.yml                    # CD pipeline
-├── infrastructure/
-│   ├── kubernetes/                   # K8s manifests
-│   ├── monitoring/                   # Prometheus, Grafana configs
-│   └── logging/                      # Logging configurations
-├── docs/
-│   ├── architecture/                
-│   ├── api/                         
-│   └── events/                      
-├── shared/
-│   ├── models/                       # Shared domain models
-│   ├── utils/                        # Common utilities
-│   ├── constants/                    # Shared constants
-│   ├── db/                           # Database connection modules
-│   │   ├── mongo/                    # MongoDB connection
-│   │   └── redis/                    # Redis connection
-│   └── events/                       # Shared event definitions
-├── backend/                          # Backend application (NestJS)
 │   ├── Dockerfile
-│   ├── src/
-│   │   ├── modules/
-│   │   │   ├── auth/                 # Authentication & user management  
-│   │   │   ├── gateway/              # API Gateway
-│   │   │   ├── boards/               # Board management  
-│   │   │   ├── tasks/                # Task management  
-│   │   │   ├── comments/             # Comments on tasks  
-│   │   │   ├── files/                # File uploads & storage  
-│   │   │   ├── integrations/         # 3rd-party integrations (GitHub, Jira, etc.)  
-│   │   │   ├── notifications/        # Email, Slack, Telegram, etc.  
-│   │   │   ├── analytics/            # Reporting & insights  
-│   │   │   └── search/               # Search functionality 
+│   ├── README.md
+│   ├── docker-compose.yml
+│   ├── eslint.config.mjs
+│   ├── nest-cli.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── app.module.ts
+│   │   ├── common
+│   │   │   ├── dtos
+│   │   │   ├── enums
+│   │   │   └── shemas
+│   │   ├── config.ts
 │   │   ├── main.ts
-│   ├── package.json
+│   │   ├── modules
+│   │   │   ├── analytics
+│   │   │   ├── auth
+│   │   │   ├── boards
+│   │   │   ├── comments
+│   │   │   ├── files
+│   │   │   ├── gateway
+│   │   │   ├── integrations
+│   │   │   ├── notifications
+│   │   │   ├── search
+│   │   │   ├── tasks
+│   │   │   ├── users
+│   │   │   └── workspaces
+│   │   └── shared
+│   │       └── mongo
+│   ├── test
+│   │   ├── app.e2e-spec.ts
+│   │   └── jest-e2e.json
+│   ├── tsconfig.build.json
 │   └── tsconfig.json
-├── frontend/                         # Frontend application (React)
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── api/
-│   │   ├── hooks/
-│   │   ├── store/
-│   │   └── App.tsx
+├── docs
+│   └── arch.txt
+├── frontend
+│   ├── README.md
+│   ├── package-lock.json
 │   ├── package.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.test.tsx
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   ├── index.tsx
+│   │   ├── logo.svg
+│   │   ├── react-app-env.d.ts
+│   │   ├── reportWebVitals.ts
+│   │   └── setupTests.ts
 │   └── tsconfig.json
-└── README.md
-
+├── package-lock.json
+└── package.json
